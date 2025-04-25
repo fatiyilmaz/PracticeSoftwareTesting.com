@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="15.14" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="Homepage" name="Positive Login Testing" time="14.925">
+<system-out><![CDATA[
+Given Homepage login........................................................passed
+And Verify homepage.........................................................passed
+Given Clicks sign in to log in..............................................passed
+And Sees that you are on the Login page.....................................passed
+And Enters string and valid value in the Email address box..................passed
+And Fill in the password box................................................passed
+And Clicks on the Login box.................................................passed
+Then Verifies that you have successfully opened your account................passed
+]]></system-out>
+</testcase>
+</testsuite>
