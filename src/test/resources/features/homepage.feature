@@ -1,35 +1,19 @@
 @homepage
-Feature: Homepage
+Feature: Products Testing
 
   Background:
     Given Homepage login
     And Verify homepage
 
-  @register
-  Scenario: Positive Register Testing
-    Given Sees sign in and clicks
-    And Clicks Register your account because your does not have an account
-    And Sees that you are on the Register page
-    And Enters a string value in the First name box
-    And Enters a string value in the Last name box
-    And Selects date from Date of birth field
-    And Enters string and valid value in the Street box
-    And Enters valid value in Postal code
-    And Enters string value in the City box
-    And Enters string in the State box
-    And Selects a country from the country field
-    And Enters valid value in the phone box
-    And Enters string and valid value in Email box
-    And The password box is filled in according to the criteria
-    And Clicks on the Register box
-    Then Verifies that the registration
+    @homepageProducts
+    Scenario: Products
+    Given Sees nine products on the homepage
+    And Goes to page five and sees nine products on each page
+    And Random clicks on a product and verifies that your has entered the product
+    And Should be able to see more products in the related products section
 
-    @login
-    Scenario: Positive Login Testing
-    Given Clicks sign in to log in
-    And Sees that you are on the Login page
-    And Enters string and valid value in the Email address box
-    And Fill in the password box
-    And Clicks on the Login box
-    Then Verifies that you have successfully opened your account
-
+   @Categories
+   Scenario: Categories
+   Given Must be able to see the Categories dropdown
+   And Ability to see five different categories in the Categories tab
+   Then Enters these categories and verifies that it is on the right page

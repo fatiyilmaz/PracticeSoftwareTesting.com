@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="15.14" tests="1" skipped="0" failures="0" errors="0">
-<testcase classname="Homepage" name="Positive Login Testing" time="14.925">
+<testsuite name="Cucumber" time="13.518" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="Products Testing" name="Categories" time="13.295">
 <system-out><![CDATA[
 Given Homepage login........................................................passed
 And Verify homepage.........................................................passed
-Given Clicks sign in to log in..............................................passed
-And Sees that you are on the Login page.....................................passed
-And Enters string and valid value in the Email address box..................passed
-And Fill in the password box................................................passed
-And Clicks on the Login box.................................................passed
-Then Verifies that you have successfully opened your account................passed
+Given Must be able to see the Categories dropdown...........................passed
+And Ability to see five different categories in the Categories tab..........passed
+Then Enters these categories and verifies that it is on the right page......passed
 ]]></system-out>
 </testcase>
 </testsuite>
