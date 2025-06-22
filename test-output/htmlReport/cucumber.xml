@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="13.518" tests="1" skipped="0" failures="0" errors="0">
-<testcase classname="Products Testing" name="Categories" time="13.295">
+<testsuite name="Cucumber" time="5.903" tests="2" skipped="0" failures="0" errors="0">
+<testcase classname="Api Testing" name="POST REGISTER" time="2.67">
 <system-out><![CDATA[
-Given Homepage login........................................................passed
-And Verify homepage.........................................................passed
-Given Must be able to see the Categories dropdown...........................passed
-And Ability to see five different categories in the Categories tab..........passed
-Then Enters these categories and verifies that it is on the right page......passed
+Given user goes to the site "https://api.practicesoftwaretesting.com/"......passed
+And post makes the process..................................................passed
+Then response verifies......................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Api Testing" name="POST LOGIN" time="3.031">
+<system-out><![CDATA[
+Given user goes to the site "https://api.practicesoftwaretesting.com/"......passed
+And user should be able to log in with the information they registered with.passed
+Then user verifies that they are logged in..................................passed
 ]]></system-out>
 </testcase>
 </testsuite>

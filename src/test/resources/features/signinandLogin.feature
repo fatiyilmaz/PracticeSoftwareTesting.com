@@ -22,14 +22,18 @@ Feature: Sign in and Log in Testing
     And Enters string and valid value in Email box
     And The password box is filled in according to the criteria
     And Clicks on the Register box
-    Then Verifies that the registration
+    Then Should be redirected to the login page
 
-    @login
-    Scenario: Positive Login Testing
+
+
+  @login
+  Scenario: Positive Login Testing
     Given Clicks sign in to log in
     And Sees that you are on the Login page
     And Enters string and valid value in the Email address box
     And Fill in the password box
     And Clicks on the Login box
     Then Verifies that you have successfully opened your account
+
+
 

@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import baseURL.practiceSoftwareTestingURL;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,20 +11,23 @@ import pages.SigninandLogin;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
-
 import java.time.Duration;
-
-import static org.junit.Assert.assertEquals;
+import java.util.UUID;
 import static org.junit.Assert.assertTrue;
 
-public class SigninandLoginSD {
+
+public class SigninandLoginSD extends practiceSoftwareTestingURL {
 
     WebDriverWait wait;
     String expectedUrl;
     SigninandLogin signinandLogin = new SigninandLogin();
 
-    //register
+    public static String email;
 
+
+
+
+    //register
     @Given("Homepage login")
     public void homepageLogin() {
         Driver.getDriver().get(ConfigReader.getProperty("practicesoftwaretesting"));
@@ -117,7 +121,10 @@ public class SigninandLoginSD {
 
     @And("Enters string and valid value in Email box")
     public void entersStringAndValidValueInEmailBox() {
-        signinandLogin.emailBox.sendKeys("testusa1212@gmail.com");
+        email = "fatih" + UUID.randomUUID().toString().substring(0, 6) + "@gmail.com";
+
+        System.out.println("Register ekranında kullanılan email: " + email);
+        signinandLogin.emailBox.sendKeys(email);
         ReusableMethods.waitFor(1);
     }
 
@@ -133,14 +140,21 @@ public class SigninandLoginSD {
         ReusableMethods.waitFor(1);
     }
 
-    @Then("Verifies that the registration")
-    public void verifiesThatTheRegistration() {
-        assert Driver.getDriver().getCurrentUrl().contains("login");
-        ReusableMethods.waitFor(1);
+    @Then("Should be redirected to the login page")
+    public void shouldBeRedirectedToTheLoginPage() {
+        String loginUrl = "login";
+        assertTrue(Driver.getDriver().getCurrentUrl().contains(loginUrl));
+        ReusableMethods.waitFor(2);
     }
 
-    //login
 
+
+
+
+
+
+
+    //login
     @Given("Clicks sign in to log in")
     public void clicksSignInToLogIn() {
         signinandLogin.signIn.click();
@@ -155,7 +169,8 @@ public class SigninandLoginSD {
 
     @And("Enters string and valid value in the Email address box")
     public void entersStringAndValidValueInTheEmailAddressBox() {
-        signinandLogin.emailBox.sendKeys("testusa1212@gmail.com");
+        System.out.println("Login'de kullanılan e-mail: " + email);
+        signinandLogin.emailBox.sendKeys(email);
         ReusableMethods.waitFor(1);
     }
 
@@ -171,7 +186,6 @@ public class SigninandLoginSD {
         ReusableMethods.waitFor(1);
     }
 
-
     @Then("Verifies that you have successfully opened your account")
     public void verifiesThatYouHaveSuccessfullyOpenedYourAccount() {
         String verification = "Here you can manage your profile, favorites and orders.";
@@ -179,3 +193,5 @@ public class SigninandLoginSD {
         ReusableMethods.waitFor(1);
     }
 }
+
+
