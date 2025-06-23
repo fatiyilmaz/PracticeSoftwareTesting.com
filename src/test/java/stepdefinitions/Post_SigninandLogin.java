@@ -17,7 +17,7 @@ import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class Post_SigninandLogin extends practiceSoftwareTestingURL {
+public class Post_SigninandLogin {
 
     Response registerResponse;
     UserRegister expectedData;
@@ -30,7 +30,7 @@ public class Post_SigninandLogin extends practiceSoftwareTestingURL {
     //apiPostRegister
     @Given("user goes to the site {string}")
     public void userGoesToTheSiteString(String url) {
-        setUp();
+        practiceSoftwareTestingURL.setUp();
     }
 
     @And("post makes the process")
@@ -49,7 +49,7 @@ public class Post_SigninandLogin extends practiceSoftwareTestingURL {
         ResponseDataRepository.password = expectedData.getPassword();
 
         registerResponse = given()
-                .spec(spec)
+                .spec(practiceSoftwareTestingURL.spec)
                 .body(expectedData)
                 .when()
                 .post("/users/register");

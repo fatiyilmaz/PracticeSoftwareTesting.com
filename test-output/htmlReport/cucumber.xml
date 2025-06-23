@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="5.903" tests="2" skipped="0" failures="0" errors="0">
-<testcase classname="Api Testing" name="POST REGISTER" time="2.67">
+<testsuite name="Cucumber" time="5.13" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="Get all products" name="Products" time="4.925">
 <system-out><![CDATA[
 Given user goes to the site "https://api.practicesoftwaretesting.com/"......passed
-And post makes the process..................................................passed
-Then response verifies......................................................passed
-]]></system-out>
-</testcase>
-<testcase classname="Api Testing" name="POST LOGIN" time="3.031">
-<system-out><![CDATA[
-Given user goes to the site "https://api.practicesoftwaretesting.com/"......passed
-And user should be able to log in with the information they registered with.passed
-Then user verifies that they are logged in..................................passed
+And user sends a GET request to retrieve all products.......................passed
+Then verify that the products are listed and response is successful.........passed
 ]]></system-out>
 </testcase>
 </testsuite>
