@@ -10,7 +10,7 @@ import java.util.*;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-public class GET_Products{
+public class Get_Products {
 
     Response getProductsResponse;
 

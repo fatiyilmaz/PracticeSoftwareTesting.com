@@ -78,7 +78,7 @@ public class SigninandLoginSD extends practiceSoftwareTestingURL {
 
     @And("Selects date from Date of birth field")
     public void selectsDateFromDateOfBirthField() {
-        signinandLogin.dobBox.sendKeys("12.02.1998");
+        signinandLogin.dobBox.sendKeys("1998-12-02");
         ReusableMethods.waitFor(1);
     }
 
