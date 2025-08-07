@@ -16,6 +16,24 @@
 - Maven installed
 - Internet access to connect to the API
 
-## 📁 Project Structure
+## Project Structure
 
-<pre> PracticeSoftwareTesting.com/ ├── src │ └── test │ ├── java │ │ ├── baseURL/ # Base API configuration │ │ ├── request/ # Request POJOs (CreatedMessage) │ │ ├── response/ # Response POJOs (ResponseCreatedMessage) │ │ └── stepdefinitions/ # Cucumber step definitions │ └── resources │ └── features/ # .feature files for scenarios ├── configuration.properties # API base URL & other configs ├── pom.xml # Maven dependencies and project setup └── README.md # Project documentation </pre>
+PracticeSoftwareTesting.com/
+- src
+test
+— java
+baseURL/
+- request/ response
+- stepdefinitions/ resources
+features/
+configuration.properties
+pom. xml
+— README. md
+# Base API configuration
+# Request POJOs (CreatedMessage)
+# Response POJOs (ResponseCreatedMessage)
+# Cucumber step definitions
+# feature files for scenarios
+# API base URL & other configs
+# Maven dependencies and project setup
+# Project documentation
