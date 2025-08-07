@@ -18,16 +18,4 @@
 
 ## 📁 Project Structure
 
-PracticeSoftwareTesting.com/
-├── src
-│   └── test
-│       ├── java
-│       │   ├── baseURL/              # Base API configuration
-│       │   ├── request/              # Request POJOs (CreatedMessage)
-│       │   ├── response/             # Response POJOs (ResponseCreatedMessage)
-│       │   └── stepdefinitions/      # Cucumber step definitions
-│       └── resources
-│           └── features/             # .feature files for scenarios
-├── configuration.properties          # API base URL & other configs
-├── pom.xml                           # Maven dependencies and project setup
-└── README.md                         # Project documentation
+<pre> PracticeSoftwareTesting.com/ ├── src │ └── test │ ├── java │ │ ├── baseURL/ # Base API configuration │ │ ├── request/ # Request POJOs (CreatedMessage) │ │ ├── response/ # Response POJOs (ResponseCreatedMessage) │ │ └── stepdefinitions/ # Cucumber step definitions │ └── resources │ └── features/ # .feature files for scenarios ├── configuration.properties # API base URL & other configs ├── pom.xml # Maven dependencies and project setup └── README.md # Project documentation </pre>
