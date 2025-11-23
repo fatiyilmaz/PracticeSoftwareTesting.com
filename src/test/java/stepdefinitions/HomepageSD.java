@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,10 +14,7 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
@@ -69,7 +67,7 @@ public class HomepageSD {
     public void shouldBeAbleToSeeMoreProductsInTheRelatedProductsSection() {
         String relatedProducts = "Related products";
         String text = homepage.relatedProductsText.getText();
-        assertEquals(relatedProducts,text);
+        assertEquals(relatedProducts, text);
         ReusableMethods.waitFor(1);
         int relatedProductsCount = homepage.relatedProducts.size();
         System.out.println("Related Products Count = " + relatedProductsCount);
@@ -77,16 +75,12 @@ public class HomepageSD {
     }
 
 
-
-
-
-
     //Categories
     @Given("Must be able to see the Categories dropdown")
     public void mustBeAbleToSeeTheCategoriesDropdown() {
         String categoriesText = "Categories";
         String categories = homepage.categoriesDropdown.getText();
-        assertEquals(categoriesText,categories);
+        assertEquals(categoriesText, categories);
         ReusableMethods.waitFor(1);
     }
 
@@ -127,9 +121,6 @@ public class HomepageSD {
     }
 
 
-
-
-
     //Sort
     @Given("Products must be sorted correctly when A-Z sorting is selected")
     public void productsMustBeSortedCorrectlyWhenAZSortingIsSelected() {
@@ -157,12 +148,6 @@ public class HomepageSD {
         ReusableMethods.waitFor(2);
 
     }
-
-
-
-
-
-
 
 
     //Search
@@ -200,13 +185,10 @@ public class HomepageSD {
         homepage.searchBox.clear();
         homepage.searchBox.sendKeys("123");
         homepage.searchBoxClick.click();
-        ReusableMethods.visibleWait(By.id(homepage.warningText.getText()),5);
+        ReusableMethods.visibleWait(By.id(homepage.warningText.getText()), 5);
         assertEquals(text, homepage.warningText.getText());
         ReusableMethods.waitFor(1);
     }
-
-
-
 
 
     //contact
@@ -232,13 +214,13 @@ public class HomepageSD {
 
     @And("Text should be able to be entered in the last name box")
     public void textShouldBeAbleToBeEnteredInTheLastNameBox() {
-        homepage.contactLastName.sendKeys("Test",Keys.ENTER);
+        homepage.contactLastName.sendKeys("Test", Keys.ENTER);
         ReusableMethods.waitFor(1);
     }
 
     @And("Email field must be fillable")
     public void emailFieldMustBeFillable() {
-        homepage.contactEmail.sendKeys("testfatih@gmail.com",Keys.ENTER);
+        homepage.contactEmail.sendKeys("testfatih@gmail.com", Keys.ENTER);
         ReusableMethods.waitFor(1);
     }
 
@@ -255,7 +237,7 @@ public class HomepageSD {
 
     @And("The message box must be fillable")
     public void theMessageBoxMustBeFillable() {
-        homepage.contactMessage.sendKeys("11111111111111111111111111111111111111111111111111",Keys.ENTER);
+        homepage.contactMessage.sendKeys("11111111111111111111111111111111111111111111111111", Keys.ENTER);
         ReusableMethods.waitFor(1);
     }
 
@@ -284,7 +266,7 @@ public class HomepageSD {
     public void seeAWarningMessageThatTheMessageHasBeenSuccessfullyTransmitted() {
         String messageSuccesfullyText = "Thanks for your message! We will contact you shortly.";
         String text = homepage.contactMessageText.getText();
-        assertEquals(text,messageSuccesfullyText);
+        assertEquals(text, messageSuccesfullyText);
         ReusableMethods.waitFor(2);
     }
 
@@ -301,13 +283,13 @@ public class HomepageSD {
 
     @Given("Text should be able to be entered in the name box {string}")
     public void textShouldBeAbleToBeEnteredInTheNameBox(String name) {
-        homepage.contactFirstName.sendKeys(name,Keys.ENTER);
+        homepage.contactFirstName.sendKeys(name, Keys.ENTER);
         ReusableMethods.waitFor(1);
     }
 
     @And("Text should be able to be entered in the last name box {string}")
     public void textShouldBeAbleToBeEnteredInTheLastNameBox(String lastname) {
-        homepage.contactLastName.sendKeys(lastname,Keys.ENTER);
+        homepage.contactLastName.sendKeys(lastname, Keys.ENTER);
         ReusableMethods.waitFor(1);
     }
 
@@ -322,8 +304,59 @@ public class HomepageSD {
     public void theUserShouldBeAskedToEnterAtLeastAlphabeticCharactersOtherwiseAnErrorMessageShouldBeDisplayed() {
         String expectedText = "enter at least 3 alphabetic characters";
         String actualText = homepage.contactMessageText.getText();
-        assertEquals(expectedText,actualText);
+        assertEquals(expectedText, actualText);
         ReusableMethods.waitFor(2);
     }
+
+
+    //languages
+    @Given("Six language options should be available")
+    public void sixLanguageOptionsShouldBeAvailable() {
+        homepage.buttonLangage.click();
+
+        int count = 1;
+        for (WebElement languageCount : homepage.dropdownLanguages) {
+            System.out.println(count + ". " + languageCount.getText());
+            count++;
+        }
+    }
+
+    @And("When language options are selected, the page should be translated into that language")
+    public void whenLanguageOptionsAreSelectedThePageShouldBeTranslatedIntoThatLanguage() {
+
+        Actions actions = new Actions(Driver.getDriver());
+
+        for (int i = 0; i < homepage.dropdownLanguages.size(); i++) {
+
+            actions.moveToElement(homepage.buttonLangage).click().perform();
+            ReusableMethods.waitFor(3);
+
+            List<WebElement> dropdownLanguages = Arrays.asList(
+                    homepage.dropdownLanguage1,
+                    homepage.dropdownLanguage2,
+                    homepage.dropdownLanguage3,
+                    homepage.dropdownLanguage4,
+                    homepage.dropdownLanguage5,
+                    homepage.dropdownLanguage6
+            );
+
+            WebElement currentLanguage = dropdownLanguages.get(i);
+            try {
+                currentLanguage.click();
+            } catch (Exception e) {
+                JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+                js.executeScript("arguments[0].click();", currentLanguage);
+            }
+
+            ReusableMethods.waitFor(2);
+            System.out.println(homepage.languageChangeVerifications.isDisplayed());
+            System.out.println("✅ Dil " + (i + 1) + " seçildi");
+        }
+
+    }
+
 }
+
+
+
 

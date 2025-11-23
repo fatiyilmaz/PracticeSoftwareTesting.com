@@ -4,14 +4,18 @@ import baseURL.practiceSoftwareTestingURL;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.Homepage;
 import pages.SigninandLogin;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 import java.time.Duration;
+import java.util.Random;
 import java.util.UUID;
 import static org.junit.Assert.assertTrue;
 
@@ -21,6 +25,9 @@ public class SigninandLoginSD extends practiceSoftwareTestingURL {
     WebDriverWait wait;
     String expectedUrl;
     SigninandLogin signinandLogin = new SigninandLogin();
+
+    Homepage homepage = new Homepage();
+    Random random = new Random();
 
     public static String email;
 
@@ -192,6 +199,7 @@ public class SigninandLoginSD extends practiceSoftwareTestingURL {
         assertTrue(verification.contains(signinandLogin.accountVerification.getText()));
         ReusableMethods.waitFor(1);
     }
+
 }
 
 

@@ -12,6 +12,7 @@ public class Homepage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
+    //products
     @FindBy(xpath = "//div[@class='col-md-9']//a[@class='card']")
     public List<WebElement> homepageProducts;
     @FindBy(xpath = "//div[@class='mt-3']//a[number(text()) >= 1 and number(text()) <= 5]")
@@ -66,5 +67,41 @@ public class Homepage {
     public WebElement contactMessageText;
     @FindBy(xpath = "//*[contains(text(),'required')]")
     public List<WebElement> contactRequired;
+
+    //languages
+    @FindBy(xpath = "//button[@id='language']")
+    public WebElement buttonLangage;
+    //div[@class='btn-group dropdown']
+    @FindBy(xpath = "//div[@class='btn-group dropdown']")
+    public WebElement buttonLangagee;
+
+    @FindBy(xpath = "//ul[@id='dropdown-animated']//li")
+    public List<WebElement> dropdownLanguages;
+
+    @FindBy(xpath = "//a[normalize-space()='DE']")//ul[@id='dropdown-animated']//li[1]
+    public WebElement dropdownLanguage1;
+
+    @FindBy(xpath = "//a[normalize-space()='EN']")//ul[@id='dropdown-animated']//li[2]
+    public WebElement dropdownLanguage2;
+
+    @FindBy(xpath = "//ul[@id='dropdown-animated']//li[3]")
+    public WebElement dropdownLanguage3;
+
+    @FindBy(xpath = "//ul[@id='dropdown-animated']//li[4]")
+    public WebElement dropdownLanguage4;
+
+    @FindBy(xpath = "//ul[@id='dropdown-animated']//li[5]")
+    public WebElement dropdownLanguage5;
+
+    @FindBy(xpath = "//ul[@id='dropdown-animated']//li[6]")
+    public WebElement dropdownLanguage6;
+
+    @FindBy(xpath = "//a[contains(text(),'Sign in') or " +
+            "contains(text(),'Einloggen') or " +
+            "contains(text(),'Iniciar sesión') or " +
+            "contains(text(),'Se connecter') or " +
+            "contains(text(),'Inloggen') or " +
+            "contains(text(),'Giriş Yap')]")
+    public WebElement languageChangeVerifications;
 
 }

@@ -13,7 +13,5 @@ public class practiceSoftwareTestingURL {
                 .setContentType(ContentType.JSON)
                 .setBaseUri("https://api.practicesoftwaretesting.com/")
                 .build();
-
-        //En guzeli her api icin , url icin bir class olusturmak.
     }
 }

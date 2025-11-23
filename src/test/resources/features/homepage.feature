@@ -29,3 +29,8 @@ Feature: Products Testing
     Given Searches for a product in the search box and sees that product
     And If you enter less than three characters in the search box, a warning should appear stating that you must enter at least three characters
     And When you search for something that doesn't exist in the search box, a "There are no products found." warning should appear
+
+  @Languages
+  Scenario: Verification of language options
+    Given Six language options should be available
+    And When language options are selected, the page should be translated into that language

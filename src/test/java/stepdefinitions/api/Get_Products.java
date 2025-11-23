@@ -1,4 +1,4 @@
-package stepdefinitions;
+package stepdefinitions.api;
 
 import baseURL.practiceSoftwareTestingURL;
 import io.cucumber.java.en.And;
@@ -65,4 +65,5 @@ public class Get_Products {
 
 
     }
+
 }

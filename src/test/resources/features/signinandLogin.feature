@@ -25,7 +25,6 @@ Feature: Sign in and Log in Testing
     Then Should be redirected to the login page
 
 
-
   @login
   Scenario: Positive Login Testing
     Given Clicks sign in to log in
@@ -34,6 +33,5 @@ Feature: Sign in and Log in Testing
     And Fill in the password box
     And Clicks on the Login box
     Then Verifies that you have successfully opened your account
-
 
 

@@ -1,4 +1,4 @@
-package stepdefinitions;
+package stepdefinitions.api;
 
 import baseURL.practiceSoftwareTestingURL;
 import io.cucumber.java.en.Given;
@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
 import request.ContactCreatedMessage;
 import response.ResponseContactCreatedMessage;
+import response.ResponseDataRepository;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
@@ -17,10 +18,11 @@ public class Post_ContactMessage extends practiceSoftwareTestingURL {
 
     @Given("Creates a message")
     public void createsAMessage() {
-        expectedData = new ContactCreatedMessage("Test Fatih", "testfatih@gmail.com", "Payments", "Follow your dreams, never ever give up on them!");
+        expectedData = new ContactCreatedMessage("Test Fatih", "testfatih@gmail.com", "Payments", "Hello World!");
 
         messageResponse = given()
                 .spec(practiceSoftwareTestingURL.spec)
+                .header("Authorization", "Bearer " + ResponseDataRepository.token)
                 .body(expectedData)
                 .when()
                 .post("/messages");
@@ -32,7 +34,6 @@ public class Post_ContactMessage extends practiceSoftwareTestingURL {
     public void theMessageIsVerified() {
         int statusCode = messageResponse.statusCode();
         if (statusCode != 200) {
-
             System.out.println("Beklenmeyen response: " + statusCode);
             System.out.println(messageResponse.prettyPrint());
             return;
@@ -41,6 +42,10 @@ public class Post_ContactMessage extends practiceSoftwareTestingURL {
         ResponseContactCreatedMessage actualData = messageResponse.as(ResponseContactCreatedMessage.class);
         System.out.println("actualData = " + actualData);
 
+        // ✅ YENİ: Oluşturulan mesajı global repository'e kaydet
+        ResponseDataRepository.createdMessage = actualData;
+        System.out.println("Oluşturulan mesaj ID'si: " + actualData.id);
+
         assertEquals(200, messageResponse.statusCode());
         assertEquals(expectedData.getName(), actualData.name);
         assertEquals(expectedData.getEmail(), actualData.email);
@@ -48,5 +53,3 @@ public class Post_ContactMessage extends practiceSoftwareTestingURL {
         assertEquals(expectedData.getMessage(), actualData.message);
     }
 }
-
-

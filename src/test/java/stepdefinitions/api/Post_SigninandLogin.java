@@ -1,4 +1,4 @@
-package stepdefinitions;
+package stepdefinitions.api;
 
 import baseURL.practiceSoftwareTestingURL;
 import io.cucumber.java.en.And;
@@ -24,7 +24,7 @@ public class Post_SigninandLogin {
     AddressUserRegister addressData;
     public static String email;
     Response loginResponse;
-
+    static String accessToken;
 
 
     //apiPostRegister
@@ -131,5 +131,28 @@ public class Post_SigninandLogin {
         System.out.println("Token Type: " + tokenType);
         System.out.println("Expires In: " + expiresIn + " seconds");
         ReusableMethods.waitFor(2);
+    }
+
+
+    // YENİ EKLENEN METHOD - Default credentials ile login
+    @And("user logs in with default credentials")
+    public void userLogsInWithDefaultCredentials() {
+
+        JSONObject loginBody = new JSONObject();
+        loginBody.put("email", "customer@practicesoftwaretesting.com");
+        loginBody.put("password", "welcome01");
+
+        loginResponse = given()
+                .contentType(ContentType.JSON)
+                .body(loginBody.toString())
+                .when()
+                .post("https://api.practicesoftwaretesting.com/users/login");
+
+        loginResponse.then().statusCode(200);
+
+        // Token'ı kaydet
+        ResponseDataRepository.token = loginResponse.jsonPath().getString("access_token");
+
+        System.out.println("Login başarılı. Token: " + ResponseDataRepository.token);
     }
 }

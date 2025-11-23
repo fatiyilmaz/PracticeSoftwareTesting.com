@@ -1,10 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="0.964" tests="1" skipped="0" failures="0" errors="0">
-<testcase classname="Post Message" name="POST MESSAGE" time="0.905">
+<testsuite name="Cucumber" time="72.747" tests="4" skipped="0" failures="1" errors="0">
+<testcase classname="Sign in and Log in Testing" name="Positive Register Testing" time="24.065">
 <system-out><![CDATA[
-Given user goes to the site "https://api.practicesoftwaretesting.com/"......passed
-Given Creates a message.....................................................passed
-Then The message is verified................................................passed
+Given Homepage login........................................................passed
+And Verify homepage.........................................................passed
+Given Sees sign in and clicks...............................................passed
+And Clicks Register your account because your does not have an account......passed
+And Sees that you are on the Register page..................................passed
+And Enters a string value in the First name box.............................passed
+And Enters a string value in the Last name box..............................passed
+And Selects date from Date of birth field...................................passed
+And Enters string and valid value in the Street box.........................passed
+And Enters valid value in Postal code.......................................passed
+And Enters string value in the City box.....................................passed
+And Enters string in the State box..........................................passed
+And Selects a country from the country field................................passed
+And Enters valid value in the phone box.....................................passed
+And Enters string and valid value in Email box..............................passed
+And The password box is filled in according to the criteria.................passed
+And Clicks on the Register box..............................................passed
+Then Should be redirected to the login page.................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Sign in and Log in Testing" name="Positive Login Testing" time="9.386">
+<system-out><![CDATA[
+Given Homepage login........................................................passed
+And Verify homepage.........................................................passed
+Given Clicks sign in to log in..............................................passed
+And Sees that you are on the Login page.....................................passed
+And Enters string and valid value in the Email address box..................passed
+And Fill in the password box................................................passed
+And Clicks on the Login box.................................................passed
+Then Verifies that you have successfully opened your account................passed
+]]></system-out>
+</testcase>
+<testcase classname="Payment Testing" name="The user logs in and purchases the product." time="35.972">
+<system-out><![CDATA[
+Given Homepage login........................................................passed
+And Verify homepage.........................................................passed
+Given A product is randomly selected from the homepage......................passed
+And Click the Add to Cart button............................................passed
+And Click on the cart to purchase the added product.........................passed
+And They see the product they selected in the cart..........................passed
+And Click the Proceed to Checkout button....................................passed
+And The session account is verified. You are prompted to proceed to the payment screen.passed
+And The Billing Address fields appear to be filled in, and you can proceed..passed
+And Bank transfer payment method is selected................................passed
+And Enter the bank name.....................................................passed
+And Enter account name......................................................passed
+And Enter account number....................................................passed
+Then Payment successfully verified..........................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Payment Testing" name="Checkout Payment API" time="3.174">
+<failure type="java.lang.AssertionError" message="Token is null! expected object to not be null">
+<![CDATA[java.lang.AssertionError: Token is null! expected object to not be null
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.assertNotNull(Assert.java:1484)
+	at stepdefinitions.PaymentSD.userHasAValidAuthenticationToken(PaymentSD.java:151)
+	at ✽.user has a valid authentication token(file:///Users/fatihyilmaz/IdeaProjects/PracticeSoftwareTesting.com/src/test/resources/features/signinandPayment.feature:24)
+]]>
+</failure>
+<system-out><![CDATA[
+Given Homepage login........................................................passed
+And Verify homepage.........................................................passed
+Given user has a valid authentication token.................................failed
+Given user sends POST request to "/payment/check" with valid payment data...skipped
+Then the API response status code should be 200.............................skipped
+And the paymentStatus should be "Payment was successful"....................skipped
 ]]></system-out>
 </testcase>
 </testsuite>
