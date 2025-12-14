@@ -13,7 +13,7 @@ import org.testng.annotations.DataProvider;
                 "html:target/cucumber-reports/api-report.html"
         },
         monochrome = true,
-        tags = "@contactMessages"
+        tags = "@api_categories"
 )
 public class ApiTestRunner extends AbstractTestNGCucumberTests {
 

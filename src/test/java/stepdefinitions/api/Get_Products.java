@@ -62,8 +62,6 @@ public class Get_Products {
         for (String id : allProductIds) {
             System.out.println("Ürün ID: " + id);
         }
-
-
     }
 
 }
